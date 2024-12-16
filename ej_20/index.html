@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <button id="terror">Terror</button>
+        <button id="accion">Acción</button>
+        <input type="text" id="finder" placeholder="Search for a movie...">
+    </div>
+
+
+
+
+
+
+
+
+
+    
+    
+    <div class="poster-container">
+        <!-- Movie Posters -->
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/2c3e50/ffffff?text=The+Dark+Knight" alt="The Dark Knight Poster">
+            <div class="title">The Dark Knight</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/f39c12/ffffff?text=Inception" alt="Inception Poster">
+            <div class="title">Inception</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/e74c3c/ffffff?text=The+Godfather" alt="The Godfather Poster">
+            <div class="title">The Godfather</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/9b59b6/ffffff?text=Pulp+Fiction" alt="Pulp Fiction Poster">
+            <div class="title">Pulp Fiction</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/27ae60/ffffff?text=Forrest+Gump" alt="Forrest Gump Poster">
+            <div class="title">Forrest Gump</div>
+        </div>
+    
+        <!-- Additional Posters -->
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/8e44ad/ffffff?text=Avengers" alt="Avengers Poster">
+            <div class="title">Avengers</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/e74c3c/ffffff?text=The+Conjuring" alt="The Conjuring Poster">
+            <div class="title">The Conjuring</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/34495e/ffffff?text=Mad+Max" alt="Mad Max Poster">
+            <div class="title">Mad Max</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/16a085/ffffff?text=It" alt="It Poster">
+            <div class="title">It</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/f39c12/ffffff?text=John+Wick" alt="John Wick Poster">
+            <div class="title">John Wick</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/9b59b6/ffffff?text=Hereditary" alt="Hereditary Poster">
+            <div class="title">Hereditary</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/2c3e50/ffffff?text=The+Matrix" alt="The Matrix Poster">
+            <div class="title">The Matrix</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/34495e/ffffff?text=The+Shining" alt="The Shining Poster">
+            <div class="title">The Shining</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/e74c3c/ffffff?text=Mission+Impossible" alt="Mission Impossible Poster">
+            <div class="title">Mission Impossible</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/16a085/ffffff?text=The+Ring" alt="The Ring Poster">
+            <div class="title">The Ring</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/27ae60/ffffff?text=Skyfall" alt="Skyfall Poster">
+            <div class="title">Skyfall</div>
+        </div>
+    
+        <div class="poster" data-genre="terror">
+            <img src="https://via.placeholder.com/200x300/9b59b6/ffffff?text=Paranormal+Activity" alt="Paranormal Activity Poster">
+            <div class="title">Paranormal Activity</div>
+        </div>
+    
+        <div class="poster" data-genre="accion">
+            <img src="https://via.placeholder.com/200x300/f39c12/ffffff?text=Terminator" alt="Terminator Poster">
+            <div class="title">Terminator</div>
+        </div>
+    </div>
+    
+</body>
+<script>
+
+    //search by title
+    const filmTitles = document.querySelectorAll(".poster");
+
+    document.querySelector("#finder").addEventListener("input", () => {
+        var filmFinder = document.querySelector("#finder").value.toLowerCase();
+
+        filmTitles.forEach(el => {
+            const title = el.querySelector(".title").textContent.toLowerCase();
+            if (title.includes(filmFinder)) {
+                el.style.display = 'block'; 
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    });
+    
+    //search by genre
+    document.querySelector("#terror").addEventListener("click", () => {
+    const selectedGenre = 'terror';
+
+    filmTitles.forEach(el => {
+        const genre = el.getAttribute('data-genre');
+        if (genre === selectedGenre) {
+            el.style.display = 'block'; // Show posters of selected genre
+        } else {
+            el.style.display = 'none'; // Hide others
+        }
+    });
+});
+
+document.querySelector("#accion").addEventListener("click", () => {
+    const selectedGenre = 'accion';
+
+    filmTitles.forEach(el => {
+        const genre = el.getAttribute('data-genre');
+        if (genre === selectedGenre) {
+            el.style.display = 'block'; // Show posters of selected genre
+        } else {
+            el.style.display = 'none'; // Hide others
+        }
+    });
+});
+
+</script>
+</html>
